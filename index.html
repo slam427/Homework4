@@ -5,38 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boot Camp Quiz!</title>
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <div class="container.fluid" id=container1>
-        <div class="row m-auto" id=row1container1>
-            <div class="col d-flex justify-content-start" id= "View High Scores">
-                <div>
-                    View High Scores
+    <div class = "container" id=container1>
+        <div class = "row d-flex justify-content-around" id=row1container1>
+
+                <div class = "col d-flex justify-content-start p-30px" id="viewHighScores">
+                    <div>View High Scores</div>
                 </div>
-                <div class="col d-flex justify-content-end" id="Timer">
-                    <div>
-                        Timer
-                    </div>
+                <div class = "col d-flex justify-content-center p-30px">
+                    <div id="quiz"></div>
                 </div>
 
-
-                <div class="row m-auto" id=row2container1>
-                    <div>
-                        <div class="col">
-                            <div id="quizQuestions"></div>
-                        </div>
-                    </div>
+                <div class="col d-flex justify-content-end p-30px" id="timer">
+                    <div>Timer</div>
                 </div>
-            </div>
         </div>
     </div>
 
             <div class="container.fluid d-block d-flex justify-content-center min-vw-100 min-vh-100" id=container2>
-                <div class="row h-100 align-items-center my-auto" id=row1container2>
+                <div class="row h-100 align-items-center my-auto" id=row1Container2>
                     <div class="col">
                         <div>
                             <button type="button" class="btn btn-primary" id="buttonA">Primary</button>
@@ -87,8 +81,9 @@
           </tr>
         </tbody>
       </table> -->
+     
+      <script src=js/script.js></script>
 
-            <script src=js/script.js></script>
 </body>
 
 </html>
