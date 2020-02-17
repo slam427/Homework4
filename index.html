@@ -10,47 +10,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-
 <body>
-
-    <div class = "container" id=container1>
-        <div class = "row d-flex justify-content-around" id=row1container1>
-
+    <header class = "container" id=container1>
+        <section class = "row d-flex justify-content-around" id=row1container1>
                 <div class = "col d-flex justify-content-start p-30px" id="viewHighScores">
-                    <div>View High Scores</div>
+                    <h6>View High Scores</h6>
                 </div>
                 <div class = "col d-flex justify-content-center p-30px" id="questionDisplay">
                     <div id="quiz"></div>
                 </div>
-
                 <div class="col d-flex justify-content-end p-30px">
-                    <div id=Timer></div>
+                    <time id="Timer">60</time>
                 </div>
-        </div>
-    </div>
-
-            <div class="container.fluid d-block d-flex justify-content-center min-vw-100 min-vh-100" id=container2>
-                <div class="row h-100 align-items-center my-auto" id=row1Container2>
-                    <div class="col">
-                        <div>
-                            <button type="button" class="btn btn-primary" id="buttonA">Primary</button>
+        </section>
+    </header>
+            <section class="container.fluid d-block d-flex justify-content-center min-vw-100 min-vh-100" id=container2>
+                <section class="row h-100 align-items-center my-auto" id=row1Container2>
+                    <div class="col" id="buttonContainer">
+                      <div>
+                        <button type="button" class="btn btn-primary" id="buttonA">A</button>
                         </div>
                         <br>
                         <div>
-                            <button type="button" class="btn btn-primary" id="buttonB">Primary</button>
+                          <button type="button" class="btn btn-primary" id="buttonB">B</button>
                         </div>
                         <br>
                         <div>
-                            <button type="button" class="btn btn-primary" id="buttonC">Primary</button>
+                          <button type="button" class="btn btn-primary" id="buttonC">C</button>
                         </div>
                         <br>
                         <div>
-                            <button type="button" class="btn btn-primary" id="buttonD">Primary</button>
+                          <button type="button" class="btn btn-primary" id="buttonD">D</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                </section>
+            </section>
             <!-- <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -81,7 +75,6 @@
           </tr>
         </tbody>
       </table> -->
-     
       <script src=js/script.js></script>
 
 </body>
