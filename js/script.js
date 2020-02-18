@@ -38,95 +38,90 @@ let answerButtonB = document.getElementById("buttonB");
 let answerButtonC = document.getElementById("buttonC");
 let answerButtonD = document.getElementById("buttonD");
 let quizDiv = document.getElementById("quiz");
-let targetQuestionDisplay = document.getElementById("questionDisplay");
 let questionDiv = document.createElement("div");
 let viewHighScores;
 let startButton = document.createElement("button");
-var currentIndex = 0;
+let currentIndex = 0;
 let currentQuestion = questionAnswerArray[currentIndex].question;
 let currentAnswer = questionAnswerArray[currentIndex];
 
 startButton.textContent = "Start the Quiz!";
 quizDiv.append(startButton);
 
-startButton.addEventListener("click", startClickHandler);
+buttonContainer.addEventListener("click", nextQuestion)
 
-// START BUTTON=============================================================================
-function startClickHandler() {
-    let remainingTime = 60;
+function nextQuestion() {
+    event.preventDefault();
+    questionDiv.textContent = questionAnswerArray[currentIndex].question;
+    answerButtonB.textContent = questionAnswerArray[currentIndex].answerB;
+    answerButtonA.textContent = questionAnswerArray[currentIndex].answerA;
+    answerButtonC.textContent = questionAnswerArray[currentIndex].answerC;
+    answerButtonD.textContent = questionAnswerArray[currentIndex].answerD;
+    currentIndex++;
+}
+
+
+    // START BUTTON=============================================================================
+    startButton.addEventListener("click", startClickHandler);
+    function startClickHandler() {
+    let remainingTime = 5;
     let timerLocation = document.getElementById("Timer");
     startButton.remove();
-    targetQuestionDisplay.appendChild(questionDiv);
-    questionDiv.append(currentQuestion);
-
+    nextQuestion();
+    
     function displayTimeLeft() {
         let timer = setInterval(function () {
             remainingTime--;
-            timerLocation.textContent = remainingTime;
-
+            timerLocation.textContent = remainingTime + " " + "seconds left";
+            
             if (remainingTime === 0) {
-                clearInterval(timer);
+                clearInterval(timer);;
                 notifyTimeLeft();
             }
         }, 1000);
     }
     function notifyTimeLeft() {
-        timerLocation.textContent = " ";
+        timerLocation.textContent = " Times up!";
     }
     displayTimeLeft();
-    answerButtonA.textContent = currentAnswer.answerA;
-    answerButtonB.textContent = currentAnswer.answerB;
-    answerButtonC.textContent = currentAnswer.answerC;
-    answerButtonD.textContent = currentAnswer.answerD;
-}//currentIndex = 0
-// ======================================================================================
+    
 
 
-let buttonContainer = document.getElementById("buttonContainer")
+quizDiv.appendChild(questionDiv);
+questionDiv.append(currentQuestion);
 
-container1.addEventListener("click", nextQuestion);
 //'click' adds to current index 
 //but question and answers not changing...???
 // //figure out 
-function nextQuestion() {
-        if (currentIndex <= questionAnswerArray.length) {
-        currentIndex++;
-        questionDiv.textContent = currentQuestion;
-        answerButtonA.textContent = currentAnswer.answerA;
-        answerButtonB.textContent = currentAnswer.answerB;
-        answerButtonC.textContent = currentAnswer.answerC;
-        answerButtonD.textContent = currentAnswer.answerD;
-        
-        } 
-}
-nextQuestion;
-// function nextQuestion() {
-// if (currentIndex <= questionAnswerArray.length) {
 
-//         questionDiv.textContent = currentQuestion.question;
-//         answerButtonA.textContent = currentQuestion.answerA;
+//currentIndex should be 1
+
+// let buttonContainer = document.getElementById("buttonContainer");
+// let nextQuestion = document.createEvent("MouseEvent");
+// // answerSubmit.initMouseEvent("click");
+// // buttonContainer.dispatchEvent(nextQuestion);
+
+
+
+}
+
+//index at load up = 0=
+//index after "start button" = 0
+
+
+
+
+// function nextQuestion() {
+    // if (currentIndex <= questionAnswerArray.length) {
+
+        //         questionDiv.textContent = currentQuestion.question;
+        //         answerButtonA.textContent = currentQuestion.answerA;
 //         answerButtonB.textContent = currentQuestion.answerB;
 //         answerButtonC.textContent = currentQuestion.answerC;
 //         answerButtonD.textContent = currentQuestion.answerD;
 //     }
 //     currentIndex++;
 // }
-
-// var answerBButton = document.getElementById("buttonB");
-// var answerAText= answerBButton.textContent = questionAnswerArray[0].answerB;
-
-// var answerCButton = document.getElementById("buttonC");
-    // answerCButton.textContent = questionAnswerArray[0].answerC;
-
-    // var answerDButton = document.getElementById("buttonD");
-    // answerDButton.textContent = questionAnswerArray[0].answerD;
-
-// var question2 = questionAnswerArray[1].question;
-
-// questionAnswerArray[0].answerB = true;
-// questionAnswerArray[1].answerC = true;
-// questionAnswerArray[2].answerB = true;
-// questionAnswerArray[3].answerC = true;
 
 
 //????????????????Why doesn't the eventlistener stop the for loop from running??????????????
@@ -140,4 +135,25 @@ nextQuestion;
 //         answerButtonC.textContent = currentQuestion.answerC;
 //         answerButtonD.textContent = currentQuestion.answerD;
 //     }
+
+// ?????????????Why doesn't this work??????????????????
+// function nextQuestion() {
+//     event.preventDefault();
+//     questionDiv.textContent = currentQuestion;
+//     answerButtonA.textContent = currentAnswer.answerA;
+//     answerButtonB.textContent = currentAnswer.answerB;
+//     answerButtonC.textContent = currentAnswer.answerC;
+//     answerButtonD.textContent = currentAnswer.answerD;
+//     currentIndex++;
 // }
+
+
+// buttonContainer.addEventListener("click", nextQuestion);
+
+// questionDiv.textContent = questionAnswerArray[currentIndex].question; this works...
+
+
+// but this doesn't....
+// var currentIndex = 0;
+// var currentQuestion = questionAnswerArray[currentIndex].question;
+//questionDiv.textContent=currentQuestion;
