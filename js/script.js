@@ -29,9 +29,7 @@ var questionAnswerArray = [
         answerC: "function myFunction",
         answerD: "Very Carefully...",
     }
-
 ];
-
 
 let answerButtonA = document.getElementById("buttonA");
 let answerButtonB = document.getElementById("buttonB");
@@ -43,117 +41,54 @@ let viewHighScores;
 let startButton = document.createElement("button");
 let currentIndex = 0;
 let currentQuestion = questionAnswerArray[currentIndex].question;
-let currentAnswer = questionAnswerArray[currentIndex];
-
+let currentAnswers = questionAnswerArray[currentIndex];
+let remainingTime = 120;
+let timerLocation = document.getElementById("Timer");
+let incorrectAnswer = 0;
 startButton.textContent = "Start the Quiz!";
 quizDiv.append(startButton);
-
-buttonContainer.addEventListener("click", nextQuestion)
-
-function nextQuestion() {
-    event.preventDefault();
-    questionDiv.textContent = questionAnswerArray[currentIndex].question;
-    answerButtonB.textContent = questionAnswerArray[currentIndex].answerB;
-    answerButtonA.textContent = questionAnswerArray[currentIndex].answerA;
-    answerButtonC.textContent = questionAnswerArray[currentIndex].answerC;
-    answerButtonD.textContent = questionAnswerArray[currentIndex].answerD;
-    currentIndex++;
-}
+let correctAnswer = 0;
 
 
-    // START BUTTON=============================================================================
-    startButton.addEventListener("click", startClickHandler);
-    function startClickHandler() {
-    let remainingTime = 5;
-    let timerLocation = document.getElementById("Timer");
+// START BUTTON=============================================================================
+startButton.addEventListener("click", startClickHandler);
+function startClickHandler() {
     startButton.remove();
     nextQuestion();
     
-    function displayTimeLeft() {
-        let timer = setInterval(function () {
-            remainingTime--;
-            timerLocation.textContent = remainingTime + " " + "seconds left";
-            
-            if (remainingTime === 0) {
-                clearInterval(timer);;
-                notifyTimeLeft();
-            }
-        }, 1000);
-    }
+    let timer = setInterval(function () {
+        remainingTime--;
+        timerLocation.textContent = remainingTime + " " + "seconds left";
+        
+        if (remainingTime === 0 || currentIndex > questionAnswerArray.length-1) {
+            clearInterval(timer);
+            notifyTimeLeft();
+        } 
+    }, 1000);
+    
     function notifyTimeLeft() {
         timerLocation.textContent = " Times up!";
     }
-    displayTimeLeft();
-    
 
+    answerButtonA.addEventListener("click", nextQuestion);
+    answerButtonB.addEventListener("click", nextQuestion);
+    answerButtonC.addEventListener("click", nextQuestion);
+    answerButtonD.addEventListener("click", nextQuestion);
 
-quizDiv.appendChild(questionDiv);
-questionDiv.append(currentQuestion);
+    function nextQuestion() {
 
-//'click' adds to current index 
-//but question and answers not changing...???
-// //figure out 
-
-//currentIndex should be 1
-
-// let buttonContainer = document.getElementById("buttonContainer");
-// let nextQuestion = document.createEvent("MouseEvent");
-// // answerSubmit.initMouseEvent("click");
-// // buttonContainer.dispatchEvent(nextQuestion);
-
-
-
+        if(currentIndex > questionAnswerArray.length-1) {
+        questionDiv.textContent = "Congratulations You have Completed the Quiz!";
+        clearInterval(timer);
+        } else {
+        questionDiv.textContent = questionAnswerArray[currentIndex].question;
+        answerButtonA.textContent = questionAnswerArray[currentIndex].answerA;
+        answerButtonB.textContent = questionAnswerArray[currentIndex].answerB;
+        answerButtonC.textContent = questionAnswerArray[currentIndex].answerC;
+        answerButtonD.textContent = questionAnswerArray[currentIndex].answerD;
+    }
+    currentIndex++;
+    }
+        quizDiv.appendChild(questionDiv);
+        questionDiv.append(currentQuestion);
 }
-
-//index at load up = 0=
-//index after "start button" = 0
-
-
-
-
-// function nextQuestion() {
-    // if (currentIndex <= questionAnswerArray.length) {
-
-        //         questionDiv.textContent = currentQuestion.question;
-        //         answerButtonA.textContent = currentQuestion.answerA;
-//         answerButtonB.textContent = currentQuestion.answerB;
-//         answerButtonC.textContent = currentQuestion.answerC;
-//         answerButtonD.textContent = currentQuestion.answerD;
-//     }
-//     currentIndex++;
-// }
-
-
-//????????????????Why doesn't the eventlistener stop the for loop from running??????????????
-//a little while later...only breaks and continues can?
-// for(currentIndex = 1; currentIndex < questionAnswerArray.length; currentIndex++ ) {
-//     buttonContainer.addEventListener("click", nextQuestion);
-//     function nextQuestion(){
-//         questionDiv.textContent = currentQuestion.question;
-//         answerButtonA.textContent = currentQuestion.answerA;
-//         answerButtonB.textContent = currentQuestion.answerB;
-//         answerButtonC.textContent = currentQuestion.answerC;
-//         answerButtonD.textContent = currentQuestion.answerD;
-//     }
-
-// ?????????????Why doesn't this work??????????????????
-// function nextQuestion() {
-//     event.preventDefault();
-//     questionDiv.textContent = currentQuestion;
-//     answerButtonA.textContent = currentAnswer.answerA;
-//     answerButtonB.textContent = currentAnswer.answerB;
-//     answerButtonC.textContent = currentAnswer.answerC;
-//     answerButtonD.textContent = currentAnswer.answerD;
-//     currentIndex++;
-// }
-
-
-// buttonContainer.addEventListener("click", nextQuestion);
-
-// questionDiv.textContent = questionAnswerArray[currentIndex].question; this works...
-
-
-// but this doesn't....
-// var currentIndex = 0;
-// var currentQuestion = questionAnswerArray[currentIndex].question;
-//questionDiv.textContent=currentQuestion;
